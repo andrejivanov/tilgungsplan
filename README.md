@@ -1,0 +1,1 @@
+http://www.mathematik.de/ger/fragenantworten/erstehilfe/zinsrechnung/annuitaetenkredit/der_annuitaetenkredit.html
