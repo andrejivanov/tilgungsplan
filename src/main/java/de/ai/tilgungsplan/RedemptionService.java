@@ -1,39 +1,32 @@
 package de.ai.tilgungsplan;
 
-import de.ai.tilgungsplan.model.RedemptionOptions;
+import de.ai.tilgungsplan.model.Options;
 
-import java.io.InputStream;
+import java.io.BufferedReader;
 import java.io.PrintStream;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class RedemptionService {
+class RedemptionService {
 
-    private InputStream inputStream;
-    private PrintStream printStream;
+    private BufferedReader input;
+    private PrintStream output;
     private LocalDate applicationDay;
 
-    public RedemptionService(InputStream inputStream, PrintStream printStream, LocalDate applicationDay){
-        this.inputStream = inputStream;
-        this.printStream = printStream;
+    RedemptionService(BufferedReader input, PrintStream output, LocalDate applicationDay) {
+        this.input = input;
+        this.output = output;
         this.applicationDay = applicationDay;
     }
 
-    public void createAndPrintRedemptionPlan(){
+    void createAndPrintRedemptionPlan() {
 
-        RedemptionOptionsReader redemptionOptionsReader = new RedemptionOptionsReader(inputStream, printStream);
-//        RedemptionOptions redemptionOptions = redemptionOptionsReader.readOptions();
-        RedemptionOptions redemptionOptions = RedemptionOptions.newBuilder()
-                .withCreditValueInEuro(new BigDecimal(100000.00))
-                .withBorrowingRate(new BigDecimal(0.0212))
-                .withFirstRedemptionRate(new BigDecimal(0.02))
-                .withYearsOfFixedInterestRate(10)
-                .build();
+        OptionsReader optionsReader = new OptionsReader(input, output);
+        Options options = optionsReader.readOptions();
 
-        RedemptionCalculator redemptionCalculator = new RedemptionCalculator(redemptionOptions, applicationDay);
+        Calculator calculator = new Calculator(options, applicationDay);
 
-        RedemptionPrinter redemptionPrinter = new RedemptionPrinter(redemptionCalculator, printStream);
-        redemptionPrinter.printTable();
+        Renderer renderer = new Renderer(calculator);
+        String renderedTable = renderer.renderTable();
+        this.output.print(renderedTable);
     }
-
 }

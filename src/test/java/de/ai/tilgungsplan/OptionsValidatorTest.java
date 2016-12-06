@@ -2,11 +2,11 @@ package de.ai.tilgungsplan;
 
 import org.junit.Test;
 
-import static de.ai.tilgungsplan.RedemptionOptionsValidator.isBigNumberValueValid;
-import static de.ai.tilgungsplan.RedemptionOptionsValidator.isIntegerValueValid;
+import static de.ai.tilgungsplan.OptionsValidator.isBigNumberValueValid;
+import static de.ai.tilgungsplan.OptionsValidator.isIntegerValueValid;
 import static org.junit.Assert.*;
 
-public class RedemptionOptionsValidatorTest {
+public class OptionsValidatorTest {
 
     @Test
     public void validatorShouldPassCorrectBigNumberValue() throws Exception {

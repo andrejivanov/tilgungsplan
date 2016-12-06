@@ -1,0 +1,17 @@
+out/
+
+# IntelliJ IDEA
+*.ipr
+*.iws
+*.ids
+.idea/
+.gradle
+build/
+reports/
+gradlew.bat
+.wercker
+
+# Maven
+target/
+# OS X
+.DS_Store

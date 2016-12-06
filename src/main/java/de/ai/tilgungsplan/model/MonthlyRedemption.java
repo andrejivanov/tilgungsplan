@@ -10,50 +10,6 @@ public class MonthlyRedemption {
     private BigDecimal payableDept;
     private BigDecimal rate;
 
-    public LocalDate getPayday() {
-        return payday;
-    }
-
-    public void setPayday(LocalDate payday) {
-        this.payday = payday;
-    }
-
-    public BigDecimal getRemainingDept() {
-        return remainingDept;
-    }
-
-    public void setRemainingDept(BigDecimal remainingDept) {
-        this.remainingDept = remainingDept;
-    }
-
-    public BigDecimal getPayableInterest() {
-        return payableInterest;
-    }
-
-    public void setPayableInterest(BigDecimal payableInterest) {
-        this.payableInterest = payableInterest;
-    }
-
-    public BigDecimal getPayableDebt() {
-        return payableDept;
-    }
-
-    public void setPayableDept(BigDecimal payableDept) {
-        this.payableDept = payableDept;
-    }
-
-    public BigDecimal getRate() {
-        return rate;
-    }
-
-    public void setRate(BigDecimal rate) {
-        this.rate = rate;
-    }
-
-    public static Builder newBuilder() {
-        return new Builder();
-    }
-
     private MonthlyRedemption(Builder builder) {
         this.payday = builder.payday;
         this.remainingDept = builder.remainingDept;
@@ -62,7 +18,31 @@ public class MonthlyRedemption {
         this.rate = builder.rate;
     }
 
-    public static final class Builder {
+    public LocalDate getPayday() {
+        return payday;
+    }
+
+    public BigDecimal getRemainingDept() {
+        return remainingDept;
+    }
+
+    public BigDecimal getPayableInterest() {
+        return payableInterest;
+    }
+
+    public BigDecimal getPayableDebt() {
+        return payableDept;
+    }
+
+    public BigDecimal getRate() {
+        return rate;
+    }
+
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
+     public static final class Builder {
         private LocalDate payday;
         private BigDecimal remainingDept;
         private BigDecimal payableInterest;
@@ -102,15 +82,27 @@ public class MonthlyRedemption {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         MonthlyRedemption that = (MonthlyRedemption) o;
 
-        if (!payday.equals(that.payday)) return false;
-        if (!remainingDept.equals(that.remainingDept)) return false;
-        if (!payableInterest.equals(that.payableInterest)) return false;
-        if (!payableDept.equals(that.payableDept)) return false;
+        if (!payday.equals(that.payday)) {
+            return false;
+        }
+        if (!remainingDept.equals(that.remainingDept)) {
+            return false;
+        }
+        if (!payableInterest.equals(that.payableInterest)) {
+            return false;
+        }
+        if (!payableDept.equals(that.payableDept)) {
+            return false;
+        }
         return rate.equals(that.rate);
 
     }
@@ -123,5 +115,16 @@ public class MonthlyRedemption {
         result = 31 * result + payableDept.hashCode();
         result = 31 * result + rate.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "MonthlyRedemption{" +
+                "payday=" + payday +
+                ", remainingDept=" + remainingDept +
+                ", payableInterest=" + payableInterest +
+                ", payableDept=" + payableDept +
+                ", rate=" + rate +
+                '}';
     }
 }
