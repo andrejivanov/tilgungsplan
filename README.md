@@ -3,7 +3,8 @@
 
 ## Formulae source
 [formula source in german](https://de.wikipedia.org/wiki/Annuit%C3%A4tendarlehen)
-[and](http://www.mathematik.de/ger/fragenantworten/erstehilfe/zinsrechnung/annuitaetenkredit/der_annuitaetenkredit.html)
+
+[and wiki](http://www.mathematik.de/ger/fragenantworten/erstehilfe/zinsrechnung/annuitaetenkredit/der_annuitaetenkredit.html)
 
 ## Prerequisite
 Java 8
